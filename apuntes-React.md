@@ -109,7 +109,7 @@ No debe de llamar localStorage o sessionStorage
 Es similar al useState con la unica diferencia de que este hook se utiliza para realizar varias acciones 
 El dispatch es una funcion que se le pasa la accion y ya sabe a que reducer mandarselo por el type=""
 ----------------------Ejemplo---------------------
-const [ state, dispatch ] = useReducer( reducer, initialState );
+const [ state, dispatch ] = useReducer( reducer, initialState , init);
 const reducer = ( state, action ) => {
     switch ( action.type ) {
         case "INCREMENT":
@@ -165,4 +165,32 @@ Es un hook que nos permite acceder al pathname de la url
 
 
 -------------------Nueva Seccion--------------------------------
-Utilizando Sass -> npm install -D sass
+Utilizando Sass -> Creamos un archivo con los estilos globales y varios archivos con los estilos de cada componente
+
+¿Qué es Redux?
+Un framework para trabajar con el estado de nuestra aplicacion
+Store es donde está la informacion que mis componentes consumirán
+    1. Siempre tendrá un state
+    2. Tendra una funcion que me permita cambiar el state : dispatcher()
+Reducer es una funcion que recibe el estado anterior y la accion que se va a realizar
+Proceso síncrono : state -> view -> actions -> dispatcher -> reducer -> new state -> view
+Proceso asíncrono : state -> view -> actions -> middleware ->-(request API) -> dispatcher -> reducer -> new state -> view
+
+Configuracion de Redux :
+    1. Instalar Redux y React-redux -> npm install redux react-redux
+    2. Crear un archivo para el reducer y ponerlo en el archivo del store 
+            -export const store = createStore('nuestro reducer'); //Nueva actualizacion -  se usa configureStore
+    3. Importar el store en el componente que se va a utilizar(en el punto mas alto de la app)
+Enlace para configuraciones del store : https://github.com/zalmoxisus/redux-devtools-extension#usage
+
+Se usa el useDispatch para mandar acciones al store
+Usamos firebase para almacenar los datos en la base de datos y para el registro de usuarios
+    -Configuracion de firebase en el archivo de configuracion
+El paquete redux-thunk nos permite hacer peticiones asincronas a la base de datos 
+Configuracion thunk  = npm install redux-thunk 
+
+Usamos la libreria validator para validar email del formulario
+
+Recuperamos datos del state de redux con useSelector
+    const { msgError } = useSelector(state => state.ui);
+
