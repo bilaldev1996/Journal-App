@@ -10,8 +10,6 @@ const LoginScreen = () => {
 
     const { loading } = useSelector(state => state.ui);
 
-    console.log(loading);
-
     const [formValues, handleInputChange] = useForm({
         email: "ramia@gmail.com",
         password: "1234567",
@@ -29,6 +27,8 @@ const LoginScreen = () => {
     const handleGoogleLogin = () =>{
         dispatch(googleLogin());
     }
+
+
 
     return (
         <>

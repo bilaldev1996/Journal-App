@@ -19,7 +19,7 @@ firebase.initializeApp(firebaseConfig);
 
 
 //Grabar datos en mi db
-const db = firebase.firestore();
+const db = firebase.firestore(); //Referencia a la base de datos de firebase
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();//twitter, facebook, github
 /* const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 const twitterAuthProvider = new firebase.auth.TwitterAuthProvider(); */

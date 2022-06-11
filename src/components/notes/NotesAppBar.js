@@ -1,10 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 const NotesAppBar = () => {
+
+    const { active } = useSelector( state => state.notes );
+
+    const noteDate = moment(active.date)
+
     return (
         <div className='notes__appbar'>
 
-            <span>28 de agosto de 2020</span>
+            <span>{ noteDate.format('MMMM Do YYYY, h:mm:ss a') }</span>
 
             <div>
                 <button className='btn'>

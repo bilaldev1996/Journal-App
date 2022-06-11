@@ -36,6 +36,7 @@ export const googleLogin = () =>{
     }
 }
 
+
 export const firebaseRegister = (name, email, password) => {
     return ( dispatch ) => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -43,7 +44,7 @@ export const firebaseRegister = (name, email, password) => {
                 await user.updateProfile({
                     displayName: name
                 })
-                swal("User created", "You can now login"+name, "success");
+                swal("Done!", "Welcome "+name, "success");
                 dispatch(login(user.uid,user.displayName))
             } ).catch( ({ message }) => {
                 swal(message, "Login please!", "error");

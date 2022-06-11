@@ -61,13 +61,14 @@ const RegisterScren = () => {
             <form onSubmit={ handleRegister }>
 
                 { msgError && <div className="auth__alert-error">{ msgError }</div> }
+                
                 <input type="text" placeholder="Name" name="name" className="auth__input" onChange={ handleInputChange } value={ name } autoComplete="off" />   
 
                 <input type="text" placeholder="Email" name="email" className="auth__input" onChange={ handleInputChange } value={ email } autoComplete="off" />   
                 <input type="password" placeholder="Password" name="password" className="auth__input" onChange={ handleInputChange } value={ password }  />   
                 <input type="password" placeholder="Confirm password" name="password2" className="auth__input" onChange={ handleInputChange } value={ password2 } />   
 
-                <button type="submit" className="btn btn-primary btn-block mb-5">Register</button>
+                <button type="submit" className="btn btn-primary btn-block mb-5">Register and Login</button>
 
                 <Link to="/auth/login" className="link">Already registered?</Link>
             </form>

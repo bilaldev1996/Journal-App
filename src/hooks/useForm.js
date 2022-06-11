@@ -8,14 +8,14 @@ const useForm = ( initialState = {} ) => {
 
     const [values, setValues] = useState(initialState);
 
-    const reset = () =>{
-        setValues(initialState);
+    const reset = ( newState = initialState ) =>{
+        setValues(newState);
     }
 
-    const handleInputChange = (e) => {
+    const handleInputChange = ({ target }) => {
         setValues({
             ...values,
-            [e.target.name]: e.target.value
+            [target.name]: target.value
         });
     };
 
