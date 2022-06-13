@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import NotesAppBar from './NotesAppBar'
-import {useSelector} from 'react-redux'
+import {useSelector , useDispatch} from 'react-redux'
 import useForm from '../../hooks/useForm';
-import { setNotes } from '../../actions/notes';
+import { activeNote, startDeleteNote } from '../../actions/notes';
 
 
 const NoteScreen = () => {
@@ -15,6 +15,8 @@ const NoteScreen = () => {
         body: note.body,
     });
 
+    const dispatch = useDispatch()
+
     const { title, body } = formValues;
 
     const activeId = useRef(note.id);
@@ -26,12 +28,23 @@ const NoteScreen = () => {
             activeId.current = note.id;
         }
 
+
     }, [note,reset]);
 
-    setNotes(note)
+
+    useEffect(() => {
+        
+        dispatch(activeNote(note.id,formValues));
+
+
+    } , [formValues,dispatch,note.id]);
+
+    const handleDelete = () => {
+        dispatch(startDeleteNote(note.id));
+    }
 
     return (
-        <div className="notes__main-context">
+        <div className="notes__main-context animate__animated animate__fadeIn">
             
             <NotesAppBar />
 
@@ -45,10 +58,14 @@ const NoteScreen = () => {
                     {
                         note.url &&
                         <div className="notes__image">
-                            <img src="https://www.cryptocompare.com/media/37746251/btc.png" alt="bitcoin" />
+                            <img src={ note.url } alt={ note.title } />
                         </div>
                     }
             </div>
+
+            <button className="btn btn-danger" onClick={ handleDelete }>
+                Delete note
+            </button>
         </div>
     )
 }

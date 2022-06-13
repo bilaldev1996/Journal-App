@@ -2,7 +2,7 @@ import React from 'react'
 import { startLogout } from '../../actions/auth'
 import JournalEntries from './JournalEntries'
 import { useDispatch, useSelector } from 'react-redux'
-import { startNewNote } from '../../actions/notes'
+import { startNewNote,startLogoutCleaning,startAddNewNote } from '../../actions/notes'
 
 
 const Sidebar = () => {
@@ -13,11 +13,13 @@ const Sidebar = () => {
 
     const handleLogout = () => {
         dispatch(startLogout())
+        dispatch(startLogoutCleaning())
     }
 
     //Boton para crear nuevas entradas en firebase
-    const handleAddNewEntry = () => {
-        dispatch(startNewNote())
+    const handleAddNewEntry = async() => {
+        const newNote = await dispatch(startNewNote())
+        dispatch(startAddNewNote(newNote))
     }
     return (
         <aside className="journal__sidebar">

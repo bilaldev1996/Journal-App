@@ -2,6 +2,7 @@ import { db } from "../firebase/firebase-config"
 
 
 
+//Get a firebase para cargar las notas creadas
 export const loadNotes = async( uid ) => {
     const notesSnap = await db.collection(`${ uid }/journal/notes`).get()
 

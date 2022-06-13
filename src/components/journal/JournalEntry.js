@@ -1,10 +1,11 @@
-import React from 'react'
+import React  from 'react'
 import { useDispatch } from 'react-redux/es/exports'
 import moment from 'moment'
 import { activeNote } from '../../actions/notes'
 
 
 const JournalEntry = ( { id, title, body, date,url } ) => {
+
 
     const noteDate = moment(date)
 
@@ -15,7 +16,7 @@ const JournalEntry = ( { id, title, body, date,url } ) => {
     }
 
     return (
-        <div className="journal__entry pointer" onClick={ selectEntry }>
+        <div className="journal__entry pointer animate__animated animate__bounce" onClick={ selectEntry }>
 
             {
                 url && 
